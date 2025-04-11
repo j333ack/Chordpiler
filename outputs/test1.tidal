@@ -1,0 +1,15 @@
+hush
+
+setcps(120/60/4)
+
+d1 $ slow 4 $ note "16 17 19 16" # sound "superpiano"
+
+d2 $ slow 4 $ note "12 12 11 12" # sound "superpiano"
+
+d3 $ slow 4 $ note "7 9 7 7" # sound "superpiano"
+
+d4 $ slow 4 $ note "4 5 2 4" # sound "superpiano"
+
+d5 $ slow 4 $ note "0 0 -1 0" # sound "superpiano"
+
+d6 $ slow 4 $ note "~ -7 -5 ~" # sound "superpiano"
