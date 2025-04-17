@@ -46,8 +46,14 @@ bpm
 	;
 
 tab
-    : string+
+    : 'Strums:' num_strums string+
+	| string+
     ;
+	
+num_strums
+	: INTLITERAL
+	|
+	;
 
 string
     : note (position FRET)+
@@ -143,10 +149,11 @@ FRET
     : '|'
     ;
 
-WHITESPACE
-    : [ \r\n\t]+ -> skip
-    ;
+//WHITESPACE
+//    : [ \r\n\t]+ -> skip
+//    ;
 	
 // Lexer rules
 fragment DIGIT : [0-9];
 INTLITERAL : DIGIT+;
+WS : [ \n\r\t] -> skip ;
