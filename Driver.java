@@ -6,7 +6,8 @@ import org.antlr.v4.runtime.tree.*;
 
 public class Driver {
 	
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception 
+	{
 
 		// create a CharStream that reads from standard input
 		ANTLRInputStream input = new ANTLRInputStream(System.in);
@@ -26,13 +27,13 @@ public class Driver {
         ParseTreeWalker walker = new ParseTreeWalker();
 
 		//create a symbol table object stb
-		SimpleSongBuilder stb = new SimpleSongBuilder();
+		SimpleSongBuilder ssb = new SimpleSongBuilder();
 
         // Walk the tree created during the parse, trigger callbacks
-        walker.walk(stb, tree);
+        walker.walk(ssb, tree);
 		
 		// print the symbol table entries
-		stb.prettyPrint();
+		ssb.prettyPrint();
 
 		//YOU ARE NOT REQUIRED TO ADD ANY CODE HERE
 	}
