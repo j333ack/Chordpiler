@@ -19,7 +19,7 @@ public class SimpleSongBuilder extends guitartabBaseListener
 
 public SimpleSongBuilder() {
         for (int i = 0; i < 6; i++) {
-            numbers[i] = new LinkedList<>();
+            numbers.add(new LinkedList<>());
         }
     }
 
@@ -31,7 +31,7 @@ public void prettyPrint()
         System.out.print("setcps(" + bpm + "/60/4)\n\n");
         for (int i = 0; i < 5; i++)
         {
-            System.out.print("d" + i+1 + " slow " + numbers.get(i).size() + " $ note \"");
+            System.out.print("d" + (i+1) + " $ slow " + numbers.get(i).size() + " $ note \"");
             for (int noteValue : numbers.get(i))
             {
                 System.out.print("[");
