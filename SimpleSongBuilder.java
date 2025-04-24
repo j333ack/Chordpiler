@@ -29,17 +29,23 @@ public void prettyPrint()
         //System.out.println("prettyPrint(): Not Implemented");
         System.out.print("hush\n\n");
         System.out.print("setcps(" + bpm + "/60/4)\n\n");
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 6; i++)
         {
             System.out.print("d" + (i+1) + " $ slow " + numbers.get(i).size() + " $ note \"");
-            for (int noteValue : numbers.get(i))
+            for (Integer noteValue : numbers.get(i))
             {
                 System.out.print("[");
-                for (int j = 0; j < strumNums.get(i); j++)
+				int chordNum = 0;
+                for (int j = 0; j < strumNums.get(chordNum); j++)
                 {
-                    System.out.print(noteValue + " ");
+					if (noteValue != null)
+						System.out.print(noteValue + " ");
+					else
+						System.out.print("~ ");
+					chordNum++;
                 }
                 System.out.print("] ");
+			
             }
             System.out.print("\" # sound \"superpiano\"\n\n");
         }
