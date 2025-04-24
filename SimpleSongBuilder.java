@@ -13,7 +13,7 @@ public class SimpleSongBuilder extends guitartabBaseListener
 	int fretCount = 0;
 	int chordCount = 0;
 	boolean isFound = false;
-	int currentNote;
+	Integer currentNote;
 	int strums;
 	int bpm = 120;
 
@@ -26,8 +26,8 @@ public void prettyPrint()
         System.out.print("setcps(" + bpm + "/60/4)\n\n");
         for (int i = 0; i < 5; i++)
         {
-            System.out.print("d" + i+1 + " slow " + numbers[i].getSize() + " $ note \"");
-            for (int noteValue : numbers[i])
+            System.out.print("d" + i+1 + " slow " + numbers.get(i).size() + " $ note \"");
+            for (int noteValue : numbers.get(i))
             {
                 System.out.print("[");
                 for (int j = 0; j < strumNums.get(i); j++)
@@ -55,7 +55,7 @@ public void prettyPrint()
 	public void exitString(guitartabParser.StringContext ctx){
 
 	if(isFound == false){
-		numbers[stringCount].add(currentNote);
+		numbers.get(stringCount).add(currentNote);
 	}
 
 	stringCount++;
@@ -78,10 +78,10 @@ public void prettyPrint()
 	public void enterFinger(guitartabParser.FingerContext ctx){
 	String finger = ctx.getText();
 	if(finger.equals("x")){
-		numbers[stringCount].add(currentNote + fretCount);
+		numbers.get(stringCount).add(currentNote + fretCount);
 	}
 	else{
-		numbers[stringCount].add(null);
+		numbers.get(stringCount).add(null);
 	}
 
 	isFound = true;
@@ -89,7 +89,8 @@ public void prettyPrint()
 
 
 	@Override
-	public void enterTab(guitartabParser.TabContext ctx){
+	public void enterTab(guitartabParser.TabContext ctx)
+{
 
 		chordCount++;
 		stringCount = 0;
@@ -103,13 +104,13 @@ public void prettyPrint()
 	}
 
 	@Override
-	public void enterPosition(guitartabParser.TabContext ctx){
+	public void enterPosition(guitartabParser.PositionContext ctx){
 
 	fretCount++;
 
 	}
 
-	private int noteMap(String note){
+	private Integer noteMap(String note){
 
 
 
