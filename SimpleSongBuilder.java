@@ -6,7 +6,8 @@ import java.util.*;
 public class SimpleSongBuilder extends guitartabBaseListener 
 {
 
-	LinkedList<Integer>[] numbers = new LinkedList<Integer>[6] ;
+	//LinkedList<Integer>[] numbers = new LinkedList<Integer>[6] ;
+	ArrayList<LinkedList<Integer>> numbers = new ArrayList<LinkedList<Integer>>();
 	LinkedList<Integer> strumNums;
 	int stringCount = 0;
 	int fretCount = 0;
@@ -14,6 +15,7 @@ public class SimpleSongBuilder extends guitartabBaseListener
 	boolean isFound = false;
 	int currentNote;
 	int strums;
+	int bpm = 120;
 
 
 public void prettyPrint()
@@ -62,7 +64,7 @@ public void prettyPrint()
 	@Override
 	public void enterBpm(guitartabParser.BpmContext ctx){
 
-		this.bpm = Integer.parseInt(ctx.getText());
+		bpm = Integer.parseInt(ctx.getText());
 
 	}
 
