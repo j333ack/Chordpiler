@@ -6,8 +6,8 @@ import java.util.*;
 public class SimpleSongBuilder extends guitartabBaseListener 
 {
 
-	LinkedList<int>[] numbers = new LinkedList<int>[6] ;
-	LinkedList<int> strumNums;
+	LinkedList<Integer>[] numbers = new LinkedList<Integer>[6] ;
+	LinkedList<Integer> strumNums;
 	int stringCount = 0;
 	int fretCount = 0;
 	int chordCount = -1;
@@ -22,13 +22,13 @@ public void prettyPrint()
         //System.out.println("prettyPrint(): Not Implemented");
         System.out.print("hush\n\n");
         System.out.print("setcps(" + bpm + "/60/4)\n\n");
-        for (int i = 1; i <= 6; i++)
+        for (int i = 0; i < 5; i++)
         {
-            System.out.print("d" + i + " slow " + numbers[i].getSize() + " $ note \"");
+            System.out.print("d" + i+1 + " slow " + numbers[i].getSize() + " $ note \"");
             for (int noteValue : numbers[i])
             {
                 System.out.print("[");
-                for (int j = 1; j < strumNums.get(i); j++)
+                for (int j = 0; j < strumNums.get(i); j++)
                 {
                     System.out.print(noteValue + " ");
                 }
@@ -70,11 +70,18 @@ public void prettyPrint()
 
 
 	@Override
-	void enterNum_strums(guitartabParser.Num_strumsContext ctx){
-
-	this.strums = Integer.parseInt(ctx.getText());
-
+	void enterFinger(guitartabParser.FingerContext ctx){
+	String finger = ctx.getText();
+	if(finger.equals("x")){
+		numbers[stringCount].add(currentNote + fretCount);
 	}
+	else{
+		numbers[stringCount].add(null);
+	}
+
+	isFound = true;
+	}
+
 
 	@Override
 	void enterTab(guitartabParser.TabContext ctx){
@@ -87,7 +94,7 @@ public void prettyPrint()
 		}
 		else{
 			strumNums.add(1);
-
+		}
 	}
 
 	@Override
