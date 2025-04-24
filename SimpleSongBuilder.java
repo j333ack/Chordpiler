@@ -114,12 +114,12 @@ public void prettyPrint()
 		switch(note){
 
 			case "e":
-				return = 4;
+				return 4;
 			case "B":
 				return -1;
 			case "G":
 				return -5;
-			case "D"
+			case "D":
 				return -10;
 			case "A":
 				return -15;
@@ -128,3 +128,5 @@ public void prettyPrint()
 		}
 		return null;
 	}
+	
+}
