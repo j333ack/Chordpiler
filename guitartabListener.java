@@ -67,6 +67,16 @@ public interface guitartabListener extends ParseTreeListener {
 	 */
 	void exitPosition(guitartabParser.PositionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link guitartabParser#finger}.
+	 * @param ctx the parse tree
+	 */
+	void enterFinger(guitartabParser.FingerContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link guitartabParser#finger}.
+	 * @param ctx the parse tree
+	 */
+	void exitFinger(guitartabParser.FingerContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link guitartabParser#note}.
 	 * @param ctx the parse tree
 	 */

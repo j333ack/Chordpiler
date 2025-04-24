@@ -1,31 +1,59 @@
 import java.util.*;	
 	
 
+
+
 public class SimpleSongBuilder extends guitartabBaseListener 
 {
 
-	private LinkedList<int>[] numbers = new LinkedList<int>[] ;
+	LinkedList<int>[] numbers = new LinkedList<int>[6] ;
+	LinkedList<int> strumNums;
 	int stringCount = 0;
-	int fretCount = 1;
+	int fretCount = 0;
+	int chordCount = -1;
 	boolean isFound = false;
-	String note;
+	int currentNote;
+	int strums;
 
 
-	public void prettyPrint()
-	{
-           // Print the contents of a tidal file to stdout. The Micro.sh script can route it to a file
-	       //System.out.println("prettyPrint(): Not Implemented");
-		   
-	}
+public void prettyPrint()
+    {
+        // Print the contents of a tidal file to stdout. The Micro.sh script can route it to a file
+        //System.out.println("prettyPrint(): Not Implemented");
+        System.out.print("hush\n\n");
+        System.out.print("setcps(" + bpm + "/60/4)\n\n");
+        for (int i = 1; i <= 6; i++)
+        {
+            System.out.print("d" + i + " slow " + numbers[i].getSize() + " $ note \"");
+            for (int noteValue : numbers[i])
+            {
+                System.out.print("[");
+                for (int j = 1; j < strumNums.get(i); j++)
+                {
+                    System.out.print(noteValue + " ");
+                }
+                System.out.print("] ");
+            }
+            System.out.print("\" # sound \"superpiano\"\n\n");
+        }
+
+    }
 
 	@Override
 	void enterString(guitartabParser.StringContext ctx){
 
 
 	isFound = false;
-	fretCount = 1;
+	fretCount = 0;
 
 
+	}
+
+	@Override
+	void exitString(guitartabParser.StringContext ctx){
+
+	if(isFound == false){
+		numbers[stringCount].add(currentNote);
 	}
 
 	@Override
@@ -37,5 +65,56 @@ public class SimpleSongBuilder extends guitartabBaseListener
 
 	@Override
 	void enterNote(guitartabParser.NoteContext ctx){
-		note = ctx.getText();
+		currentNote = noteMap(ctx.getText());
+	}
+
+
+	@Override
+	void enterNum_strums(guitartabParser.Num_strumsContext ctx){
+
+	this.strums = Integer.parseInt(ctx.getText());
+
+	}
+
+	@Override
+	void enterTab(guitartabParser.TabContext ctx){
+
+		chordCount++;
+		stringCount = 0;
+		String num = ctx.num_strums().getText();
+		if(!num.equals("")){
+			strumNums.add(Integer.parseInt(num));
+		}
+		else{
+			strumNums.add(1);
+
+	}
+
+	@Override
+	void enterPosition(guitartabParser.TabContext ctx){
+
+	fretCount++;
+
+	}
+
+	private int noteMap(String note){
+
+
+
+		switch(note){
+
+			case "e":
+				return = 4;
+			case "B":
+				return -1;
+			case "G":
+				return -5;
+			case "D"
+				return -10;
+			case "A":
+				return -15;
+			case "E":
+				return -20;
+		}
+		return null;
 	}

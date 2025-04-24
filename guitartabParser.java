@@ -21,10 +21,10 @@ public class guitartabParser extends Parser {
 		WS=21;
 	public static final int
 		RULE_song = 0, RULE_bpm = 1, RULE_tab = 2, RULE_num_strums = 3, RULE_string = 4, 
-		RULE_position = 5, RULE_note = 6;
+		RULE_position = 5, RULE_finger = 6, RULE_note = 7;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"song", "bpm", "tab", "num_strums", "string", "position", "note"
+			"song", "bpm", "tab", "num_strums", "string", "position", "finger", "note"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -127,25 +127,25 @@ public class guitartabParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(14);
+			setState(16);
 			match(T__0);
-			setState(15);
+			setState(17);
 			bpm();
-			setState(17); 
+			setState(19); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(16);
+				setState(18);
 				tab();
 				}
 				}
-				setState(19); 
+				setState(21); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << BA) | (1L << BB) | (1L << BC) | (1L << BD) | (1L << BE) | (1L << BF) | (1L << BG) | (1L << LA) | (1L << LB) | (1L << LC) | (1L << LD) | (1L << LE) | (1L << LF) | (1L << LG))) != 0) );
-			setState(21);
+			setState(23);
 			match(EOF);
 			}
 		}
@@ -180,13 +180,13 @@ public class guitartabParser extends Parser {
 		BpmContext _localctx = new BpmContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_bpm);
 		try {
-			setState(25);
+			setState(27);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case INTLITERAL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(23);
+				setState(25);
 				match(INTLITERAL);
 				}
 				break;
@@ -253,17 +253,17 @@ public class guitartabParser extends Parser {
 		enterRule(_localctx, 4, RULE_tab);
 		try {
 			int _alt;
-			setState(39);
+			setState(41);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(27);
+				setState(29);
 				match(T__1);
-				setState(28);
+				setState(30);
 				num_strums();
-				setState(30); 
+				setState(32); 
 				_errHandler.sync(this);
 				_alt = 1;
 				do {
@@ -271,7 +271,7 @@ public class guitartabParser extends Parser {
 					case 1:
 						{
 						{
-						setState(29);
+						setState(31);
 						string();
 						}
 						}
@@ -279,7 +279,7 @@ public class guitartabParser extends Parser {
 					default:
 						throw new NoViableAltException(this);
 					}
-					setState(32); 
+					setState(34); 
 					_errHandler.sync(this);
 					_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
@@ -301,7 +301,7 @@ public class guitartabParser extends Parser {
 			case LG:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(35); 
+				setState(37); 
 				_errHandler.sync(this);
 				_alt = 1;
 				do {
@@ -309,7 +309,7 @@ public class guitartabParser extends Parser {
 					case 1:
 						{
 						{
-						setState(34);
+						setState(36);
 						string();
 						}
 						}
@@ -317,7 +317,7 @@ public class guitartabParser extends Parser {
 					default:
 						throw new NoViableAltException(this);
 					}
-					setState(37); 
+					setState(39); 
 					_errHandler.sync(this);
 					_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
 				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
@@ -358,13 +358,13 @@ public class guitartabParser extends Parser {
 		Num_strumsContext _localctx = new Num_strumsContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_num_strums);
 		try {
-			setState(43);
+			setState(45);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case INTLITERAL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(41);
+				setState(43);
 				match(INTLITERAL);
 				}
 				break;
@@ -436,21 +436,21 @@ public class guitartabParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(45);
+			setState(47);
 			note();
-			setState(49); 
+			setState(51); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(46);
+				setState(48);
 				position();
-				setState(47);
+				setState(49);
 				match(FRET);
 				}
 				}
-				setState(51); 
+				setState(53); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==FINGER || _la==BARLNE );
@@ -468,9 +468,11 @@ public class guitartabParser extends Parser {
 	}
 
 	public static class PositionContext extends ParserRuleContext {
-		public List<TerminalNode> FINGER() { return getTokens(guitartabParser.FINGER); }
-		public TerminalNode FINGER(int i) {
-			return getToken(guitartabParser.FINGER, i);
+		public List<FingerContext> finger() {
+			return getRuleContexts(FingerContext.class);
+		}
+		public FingerContext finger(int i) {
+			return getRuleContext(FingerContext.class,i);
 		}
 		public List<TerminalNode> BARLNE() { return getTokens(guitartabParser.BARLNE); }
 		public TerminalNode BARLNE(int i) {
@@ -497,28 +499,71 @@ public class guitartabParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(54); 
+			setState(57); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
-				{
-				setState(53);
-				_la = _input.LA(1);
-				if ( !(_la==FINGER || _la==BARLNE) ) {
-				_errHandler.recoverInline(this);
+				setState(57);
+				_errHandler.sync(this);
+				switch (_input.LA(1)) {
+				case FINGER:
+					{
+					setState(55);
+					finger();
+					}
+					break;
+				case BARLNE:
+					{
+					setState(56);
+					match(BARLNE);
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
 				}
-				else {
-					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-					_errHandler.reportMatch(this);
-					consume();
 				}
-				}
-				}
-				setState(56); 
+				setState(59); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==FINGER || _la==BARLNE );
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class FingerContext extends ParserRuleContext {
+		public TerminalNode FINGER() { return getToken(guitartabParser.FINGER, 0); }
+		public FingerContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_finger; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof guitartabListener ) ((guitartabListener)listener).enterFinger(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof guitartabListener ) ((guitartabListener)listener).exitFinger(this);
+		}
+	}
+
+	public final FingerContext finger() throws RecognitionException {
+		FingerContext _localctx = new FingerContext(_ctx, getState());
+		enterRule(_localctx, 12, RULE_finger);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(61);
+			match(FINGER);
 			}
 		}
 		catch (RecognitionException re) {
@@ -563,12 +608,12 @@ public class guitartabParser extends Parser {
 
 	public final NoteContext note() throws RecognitionException {
 		NoteContext _localctx = new NoteContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_note);
+		enterRule(_localctx, 14, RULE_note);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(58);
+			setState(63);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BA) | (1L << BB) | (1L << BC) | (1L << BD) | (1L << BE) | (1L << BF) | (1L << BG) | (1L << LA) | (1L << LB) | (1L << LC) | (1L << LD) | (1L << LE) | (1L << LF) | (1L << LG))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -592,23 +637,24 @@ public class guitartabParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\27?\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\3\2\3\2\3\2\6\2\24\n\2\r\2"+
-		"\16\2\25\3\2\3\2\3\3\3\3\5\3\34\n\3\3\4\3\4\3\4\6\4!\n\4\r\4\16\4\"\3"+
-		"\4\6\4&\n\4\r\4\16\4\'\5\4*\n\4\3\5\3\5\5\5.\n\5\3\6\3\6\3\6\3\6\6\6\64"+
-		"\n\6\r\6\16\6\65\3\7\6\79\n\7\r\7\16\7:\3\b\3\b\3\b\2\2\t\2\4\6\b\n\f"+
-		"\16\2\4\3\2\23\24\3\2\5\22\2?\2\20\3\2\2\2\4\33\3\2\2\2\6)\3\2\2\2\b-"+
-		"\3\2\2\2\n/\3\2\2\2\f8\3\2\2\2\16<\3\2\2\2\20\21\7\3\2\2\21\23\5\4\3\2"+
-		"\22\24\5\6\4\2\23\22\3\2\2\2\24\25\3\2\2\2\25\23\3\2\2\2\25\26\3\2\2\2"+
-		"\26\27\3\2\2\2\27\30\7\2\2\3\30\3\3\2\2\2\31\34\7\26\2\2\32\34\3\2\2\2"+
-		"\33\31\3\2\2\2\33\32\3\2\2\2\34\5\3\2\2\2\35\36\7\4\2\2\36 \5\b\5\2\37"+
-		"!\5\n\6\2 \37\3\2\2\2!\"\3\2\2\2\" \3\2\2\2\"#\3\2\2\2#*\3\2\2\2$&\5\n"+
-		"\6\2%$\3\2\2\2&\'\3\2\2\2\'%\3\2\2\2\'(\3\2\2\2(*\3\2\2\2)\35\3\2\2\2"+
-		")%\3\2\2\2*\7\3\2\2\2+.\7\26\2\2,.\3\2\2\2-+\3\2\2\2-,\3\2\2\2.\t\3\2"+
-		"\2\2/\63\5\16\b\2\60\61\5\f\7\2\61\62\7\25\2\2\62\64\3\2\2\2\63\60\3\2"+
-		"\2\2\64\65\3\2\2\2\65\63\3\2\2\2\65\66\3\2\2\2\66\13\3\2\2\2\679\t\2\2"+
-		"\28\67\3\2\2\29:\3\2\2\2:8\3\2\2\2:;\3\2\2\2;\r\3\2\2\2<=\t\3\2\2=\17"+
-		"\3\2\2\2\n\25\33\"\')-\65:";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\27D\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\3\2\3\2\3\2\6\2\26"+
+		"\n\2\r\2\16\2\27\3\2\3\2\3\3\3\3\5\3\36\n\3\3\4\3\4\3\4\6\4#\n\4\r\4\16"+
+		"\4$\3\4\6\4(\n\4\r\4\16\4)\5\4,\n\4\3\5\3\5\5\5\60\n\5\3\6\3\6\3\6\3\6"+
+		"\6\6\66\n\6\r\6\16\6\67\3\7\3\7\6\7<\n\7\r\7\16\7=\3\b\3\b\3\t\3\t\3\t"+
+		"\2\2\n\2\4\6\b\n\f\16\20\2\3\3\2\5\22\2D\2\22\3\2\2\2\4\35\3\2\2\2\6+"+
+		"\3\2\2\2\b/\3\2\2\2\n\61\3\2\2\2\f;\3\2\2\2\16?\3\2\2\2\20A\3\2\2\2\22"+
+		"\23\7\3\2\2\23\25\5\4\3\2\24\26\5\6\4\2\25\24\3\2\2\2\26\27\3\2\2\2\27"+
+		"\25\3\2\2\2\27\30\3\2\2\2\30\31\3\2\2\2\31\32\7\2\2\3\32\3\3\2\2\2\33"+
+		"\36\7\26\2\2\34\36\3\2\2\2\35\33\3\2\2\2\35\34\3\2\2\2\36\5\3\2\2\2\37"+
+		" \7\4\2\2 \"\5\b\5\2!#\5\n\6\2\"!\3\2\2\2#$\3\2\2\2$\"\3\2\2\2$%\3\2\2"+
+		"\2%,\3\2\2\2&(\5\n\6\2\'&\3\2\2\2()\3\2\2\2)\'\3\2\2\2)*\3\2\2\2*,\3\2"+
+		"\2\2+\37\3\2\2\2+\'\3\2\2\2,\7\3\2\2\2-\60\7\26\2\2.\60\3\2\2\2/-\3\2"+
+		"\2\2/.\3\2\2\2\60\t\3\2\2\2\61\65\5\20\t\2\62\63\5\f\7\2\63\64\7\25\2"+
+		"\2\64\66\3\2\2\2\65\62\3\2\2\2\66\67\3\2\2\2\67\65\3\2\2\2\678\3\2\2\2"+
+		"8\13\3\2\2\29<\5\16\b\2:<\7\24\2\2;9\3\2\2\2;:\3\2\2\2<=\3\2\2\2=;\3\2"+
+		"\2\2=>\3\2\2\2>\r\3\2\2\2?@\7\23\2\2@\17\3\2\2\2AB\t\2\2\2B\21\3\2\2\2"+
+		"\13\27\35$)+/\67;=";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

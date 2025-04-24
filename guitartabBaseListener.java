@@ -87,6 +87,18 @@ public class guitartabBaseListener implements guitartabListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFinger(guitartabParser.FingerContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFinger(guitartabParser.FingerContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterNote(guitartabParser.NoteContext ctx) { }
 	/**
 	 * {@inheritDoc}
