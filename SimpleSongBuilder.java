@@ -40,7 +40,7 @@ public void prettyPrint()
     }
 
 	@Override
-	void enterString(guitartabParser.StringContext ctx){
+	public void enterString(guitartabParser.StringContext ctx){
 
 
 	isFound = false;
@@ -50,7 +50,7 @@ public void prettyPrint()
 	}
 
 	@Override
-	void exitString(guitartabParser.StringContext ctx){
+	public void exitString(guitartabParser.StringContext ctx){
 
 	if(isFound == false){
 		numbers[stringCount].add(currentNote);
@@ -60,20 +60,20 @@ public void prettyPrint()
 	}
 
 	@Override
-	void enterBpm(guitartabParser.BpmContext ctx){
+	public void enterBpm(guitartabParser.BpmContext ctx){
 
 		this.bpm = Integer.parseInt(ctx.getText());
 
 	}
 
 	@Override
-	void enterNote(guitartabParser.NoteContext ctx){
+	public void enterNote(guitartabParser.NoteContext ctx){
 		currentNote = noteMap(ctx.getText());
 	}
 
 
 	@Override
-	void enterFinger(guitartabParser.FingerContext ctx){
+	public void enterFinger(guitartabParser.FingerContext ctx){
 	String finger = ctx.getText();
 	if(finger.equals("x")){
 		numbers[stringCount].add(currentNote + fretCount);
@@ -87,7 +87,7 @@ public void prettyPrint()
 
 
 	@Override
-	void enterTab(guitartabParser.TabContext ctx){
+	public void enterTab(guitartabParser.TabContext ctx){
 
 		chordCount++;
 		stringCount = 0;
@@ -101,7 +101,7 @@ public void prettyPrint()
 	}
 
 	@Override
-	void enterPosition(guitartabParser.TabContext ctx){
+	public void enterPosition(guitartabParser.TabContext ctx){
 
 	fretCount++;
 
