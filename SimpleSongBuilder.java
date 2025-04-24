@@ -10,7 +10,7 @@ public class SimpleSongBuilder extends guitartabBaseListener
 	LinkedList<Integer> strumNums;
 	int stringCount = 0;
 	int fretCount = 0;
-	int chordCount = -1;
+	int chordCount = 0;
 	boolean isFound = false;
 	int currentNote;
 	int strums;
@@ -54,6 +54,9 @@ public void prettyPrint()
 
 	if(isFound == false){
 		numbers[stringCount].add(currentNote);
+	}
+
+	stringCount++;
 	}
 
 	@Override
