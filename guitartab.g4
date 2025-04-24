@@ -60,8 +60,12 @@ string
     ;
 
 position
-    : (FINGER | BARLNE)+
+    : (finger | BARLNE)+
     ;
+	
+finger
+	: FINGER
+	;
 
 note
     : BA
@@ -79,7 +83,8 @@ note
     | LF
     | LG
     ;
-
+	
+// Lexer rules
 BA
     : 'A'
     ;
@@ -147,13 +152,16 @@ BARLNE
 
 FRET
     : '|'
-    ;
+    ;	
 
-//WHITESPACE
-//    : [ \r\n\t]+ -> skip
-//    ;
+fragment DIGIT
+	: [0-9]
+	;
 	
-// Lexer rules
-fragment DIGIT : [0-9];
-INTLITERAL : DIGIT+;
-WS : [ \n\r\t] -> skip ;
+INTLITERAL
+	: DIGIT+
+	;
+	
+WS
+	: [ \n\r\t] -> skip
+	;

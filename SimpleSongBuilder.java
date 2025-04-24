@@ -13,8 +13,9 @@ public class SimpleSongBuilder extends guitartabBaseListener
 
 	public void prettyPrint()
 	{
-           // Print all symbol tables in the order they were created
-	       System.out.println("prettyPrint(): Not Implemented");
+           // Print the contents of a tidal file to stdout. The Micro.sh script can route it to a file
+	       //System.out.println("prettyPrint(): Not Implemented");
+		   
 	}
 
 	@Override
