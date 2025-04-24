@@ -8,7 +8,7 @@ public class SimpleSongBuilder extends guitartabBaseListener
 
 	//LinkedList<Integer>[] numbers = new LinkedList<Integer>[6] ;
 	ArrayList<LinkedList<Integer>> numbers = new ArrayList<LinkedList<Integer>>();
-	LinkedList<Integer> strumNums;
+	LinkedList<Integer> strumNums = new LinkedList<>();
 	int stringCount = 0;
 	int fretCount = 0;
 	int chordCount = 0;
@@ -17,6 +17,11 @@ public class SimpleSongBuilder extends guitartabBaseListener
 	int strums;
 	int bpm = 120;
 
+public SimpleSongBuilder() {
+        for (int i = 0; i < 6; i++) {
+            numbers[i] = new LinkedList<>();
+        }
+    }
 
 public void prettyPrint()
     {
