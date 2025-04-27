@@ -1,0 +1,15 @@
+hush
+
+setcps(204/60/4)
+
+d1 $ slow 8 $ note "[4 4 ] [~ ~ ] [7 7 ] [~ ~ ] [4 4 ] [~ ~ ] [4 4 ] [~ ~ ] " # sound "superpiano"
+
+d2 $ slow 8 $ note "[0 0 ] [~ ~ ] [-1 -1 ] [~ ~ ] [0 0 ] [~ ~ ] [0 0 ] [~ ~ ] " # sound "superpiano"
+
+d3 $ slow 8 $ note "[-3 -3 ] [~ ~ ] [-5 -5 ] [~ ~ ] [-5 -5 ] [~ ~ ] [-5 -5 ] [~ ~ ] " # sound "superpiano"
+
+d4 $ slow 8 $ note "[-8 -8 ] [~ ~ ] [-10 -10 ] [~ ~ ] [-8 -8 ] [~ ~ ] [-8 -8 ] [~ ~ ] " # sound "superpiano"
+
+d5 $ slow 8 $ note "[-15 -15 ] [~ ~ ] [-13 -13 ] [~ ~ ] [-12 -12 ] [~ ~ ] [-12 -12 ] [~ ~ ] " # sound "superpiano"
+
+d6 $ slow 8 $ note "[~ ~ ] [~ ~ ] [-17 -17 ] [~ ~ ] [~ ~ ] [~ ~ ] [~ ~ ] [~ ~ ] " # sound "superpiano"
